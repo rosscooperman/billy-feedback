@@ -18,15 +18,6 @@ class ImageUploader < CarrierWave::Uploader::Base
 	storage :file
 end
 
-# class Image
-# 	include DataMapper::Resource
-
-# 	property :id, Serial
-
-# 	mount_uploader :source, ImageUploader
-# end
-
-# DataMapper.auto_upgrade! # migrate automatically
 
 class Feedback < Sinatra::Base
 	get '/' do
@@ -44,6 +35,10 @@ class Feedback < Sinatra::Base
 
 
 	get '/view' do
+		erb :list, :locals => { :items => Item.all }
+	end
+
+	get '/view/' do
 		erb :list, :locals => { :items => Item.all }
 	end
 

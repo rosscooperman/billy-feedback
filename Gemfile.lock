@@ -40,4 +40,5 @@ DEPENDENCIES
   bson_ext
   carrierwave
   mongoid
+  rack
   sinatra

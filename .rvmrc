@@ -1,0 +1,1 @@
+rvm use 1.9.3@`git config --get remote.origin.url | sed 's#git@github\.com:.*\/##' | sed 's#\.git$##'` --create

@@ -1,36 +1,54 @@
-require 'sinatra'
-# require 'shotgun'
-require 'dm-core'
-require 'dm-migrations'
+require 'rubygems'
+require 'bundler/setup'
 
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
+
+Mongoid.load!("config/mongoid.yml", :development)
+# DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
 
 #define model
-class Feedback
-	include DataMapper::Resource
+class Item
+	include Mongoid::Document
 
-	property :id, Serial
-	property :token, String
-	property :text, String
-
+	field :token, type: String
+	field :content, type: String
 end
 
-DataMapper.auto_upgrade! # migrate automatically
-
-get '/' do
-  "Thank you for using Billy!"
+#define uploader
+class ImageUploader < CarrierWave::Uploader::Base
+	storage :file
 end
 
-get '/new' do
-	erb :form
-end
+# class Image
+# 	include DataMapper::Resource
 
-post '/form' do
-	"Items: '#{params[:message]}'  Key:   '#{params[:key]}'"
-end
+# 	property :id, Serial
 
-# get '/feedback/:key/:content' do
-# 	@key = params[:key]
-# 	@content = params[:content]
+# 	mount_uploader :source, ImageUploader
 # end
 
+# DataMapper.auto_upgrade! # migrate automatically
+
+class Feedback < Sinatra::Base
+	get '/' do
+	  erb :form
+	end
+
+
+	post '/form' do
+		item = Item.new
+		item.attributes = params
+		item.save
+
+		redirect "/view/#{item.id}"
+	end
+
+
+	get '/view' do
+		erb :list, :locals => { :items => Item.all }
+	end
+
+	get '/view/:id' do
+		item = Item.find(params[:id])
+		erb :show, :locals => { :item => item }
+	end
+end

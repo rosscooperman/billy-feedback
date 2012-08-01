@@ -6,15 +6,19 @@ Mongoid.load!("config/mongoid.yml", :development)
 CarrierWave.configure do |config|
   config.fog_credentials = {
     :provider               => 'AWS',
-    :aws_access_key_id      => 'xxx',
-    :aws_secret_access_key  => 'yyy'
+    :aws_access_key_id      => 'AKIAJNU5CLXDPYM3ZZVQ',
+    :aws_secret_access_key  => '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'
   }
-  config.fog_directory  = 'zzz'
+  config.fog_directory  = 'billyup-feedback'
 end
 
 #define uploader
 class ImageUploader < CarrierWave::Uploader::Base
-	storage :file     # :fog for production
+	storage :fog     # :fog for production
+
+  def store_dir
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
 end
 
 #define model

@@ -1,12 +1,11 @@
 require 'rubygems'
 require 'bundler/setup'
 
-
 Mongoid.load!("config/mongoid.yml", :development)
 
 #define uploader
 class ImageUploader < CarrierWave::Uploader::Base
-	storage :file
+	storage :file     # :fog for production
 end
 
 #define model
@@ -34,7 +33,7 @@ class Feedback < Sinatra::Base
 		redirect "/view/#{item.id}"
 	end
 
-	get '/view' do
+	get '/view/?' do
 		erb :list, :locals => { :items => Item.all }
 	end
 

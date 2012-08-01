@@ -3,6 +3,15 @@ require 'bundler/setup'
 
 Mongoid.load!("config/mongoid.yml", :development)
 
+CarrierWave.configure do |config|
+  config.fog_credentials = {
+    :provider               => 'AWS',
+    :aws_access_key_id      => 'xxx',
+    :aws_secret_access_key  => 'yyy'
+  }
+  config.fog_directory  = 'zzz'
+end
+
 #define uploader
 class ImageUploader < CarrierWave::Uploader::Base
 	storage :file     # :fog for production
@@ -42,5 +51,3 @@ class Feedback < Sinatra::Base
 		erb :show, :locals => { :item => item }
 	end
 end
-
-#%r{/view/?} 

@@ -1,5 +1,5 @@
 class Feedback < Sinatra::Base
-	set :views, File.join(File.dirname(__FILE__),'..','views')
+	set :views, File.join(File.dirname(__FILE__),'..','views') 
 
 	get '/' do
 	  erb :form

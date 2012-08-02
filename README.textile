@@ -1,0 +1,2 @@
+h1. Launching
+From the terminal, call @rackup@

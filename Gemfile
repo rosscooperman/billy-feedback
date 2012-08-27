@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'sinatra'
+gem 'rake'
 gem 'mysql2'
 gem 'activerecord', :require => 'active_record'
 gem 'carrierwave'

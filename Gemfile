@@ -1,9 +1,13 @@
 source 'http://rubygems.org'
 
 gem 'sinatra'
-gem 'mongoid'
+gem 'mysql2'
+gem 'activerecord', :require => 'active_record'
 gem 'carrierwave'
-gem 'bson_ext'
 gem 'rack'
-gem "carrierwave-mongoid", :git => "https://github.com/jnicklas/carrierwave-mongoid.git", :branch => "mongoid-3.0", :require => 'carrierwave/mongoid'
 gem 'fog'
+gem 'ey_config'
+
+group :development do
+end
+

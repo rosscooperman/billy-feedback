@@ -1,14 +1,7 @@
-require 'rubygems'
-require 'bundler'
-Bundler.require
+require File.expand_path('../config/boot', __FILE__)
 
-$: << File.dirname(__FILE__)
-
-require 'config/initializers/carrierwave'
-require 'config/initializers/mongoid'
-require 'lib/image_uploader'
-require 'lib/item'
-require 'lib/feedback'
+# require the main feedback application
+require 'feedback'
 
 use Rack::Reloader
 run Feedback

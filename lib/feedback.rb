@@ -2,15 +2,16 @@
 # ==========
 #
 # integer  :id
-# string   :token
-# string   :content
-# string   :image
-# string   :cropped_image
+#
+# string   :raw_text
+# string   :original
+# string   :processed
+#
 # datetime :created_at
 # datetime :updated_at
 #
 
 class Feedback < ActiveRecord::Base
-  mount_uploader :image, ImageUploader
-  mount_uploader :cropped_image, ImageUploader
+  mount_uploader :original,  ImageUploader
+  mount_uploader :processed, ImageUploader
 end

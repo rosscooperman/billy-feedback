@@ -3,7 +3,7 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Content</th>
+      <th>Raw Text</th>
       <th>Images</th>
     </tr>
   </thead>
@@ -12,15 +12,13 @@
       <tr>
         <td><%= f.id %></td> 
         <td>
-          <%= f.content.truncate(40) %>
-          <% if f.content.length > 37 %>
-            <a href="/feedback/<%= f.id %>/content" class="more-link">(more)</a>
-          <% end %>
+          <% omission = "... <a href=\"feedback/#{f.id}/raw\" class=\"more-link\">(more)</a>" %>
+          <%= f.raw_text.truncate(40, :omission => omission) %>
         </td>
         <td>
-          <a href="<%= f.image.url %>">Original</a>
+          <a href="<%= f.original.url %>">Original</a>
           |
-          <a href="<%= f.cropped_image.url %>">Processed</a>
+          <a href="<%= f.processed.url %>">Processed</a>
         </td>
       </tr>
     <% end %>

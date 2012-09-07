@@ -1,23 +1,23 @@
 <form enctype="multipart/form-data" action="/feedback" method="post" class="form-horizontal">
   <legend>Create Feedback</legend>
   <div class="control-group">
-    <label class="control-label" for="feedback_content">Content</label>
+    <label class="control-label" for="feedback_raw_text">Raw Text</label>
     <div class="controls">
-      <textarea name="feedback[content]" id="feedback_content" rows="10" class="input-xxlarge"></textarea>
+      <textarea name="feedback[raw_text]" id="feedback_raw_text" rows="10" class="input-xxlarge"></textarea>
     </div>
   </div>
 
   <div class="control-group">
-    <label class="control-label" for="feedback_image">Original</label>
+    <label class="control-label" for="feedback_original">Original</label>
     <div class="controls">
-      <input type="file" name="feedback[image]" id="feedback_image">
+      <input type="file" name="feedback[original]" id="feedback_original">
     </div>
   </div>
 
   <div class="control-group">
-    <label class="control-label" for="feedback_cropped_image">Processed</label>
+    <label class="control-label" for="feedback_processed">Processed</label>
     <div class="controls">
-      <input type="file" name="feedback[cropped_image]" id="feedback_cropped_image">
+      <input type="file" name="feedback[processed]" id="feedback_processed">
     </div>
   </div>
 

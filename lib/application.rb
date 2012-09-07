@@ -24,9 +24,9 @@ class Application < Sinatra::Base
     erb :index, :locals => { :feedback => Feedback.all }
   end
 
-  get '/feedback/:id/content' do |id|
+  get '/feedback/:id/raw' do |id|
     feedback = Feedback.find(id)
-    erb :content, :locals => { :feedback => feedback }
+    erb :raw, :locals => { :feedback => feedback }
   end
 
   get '/feedback/create/?' do

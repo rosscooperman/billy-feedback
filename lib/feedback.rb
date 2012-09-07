@@ -1,27 +1,16 @@
-require 'image_uploader'
-require 'item'
+# Attributes
+# ==========
+#
+# integer  :id
+# string   :token
+# string   :content
+# string   :image
+# string   :cropped_image
+# datetime :created_at
+# datetime :updated_at
+#
 
-class Feedback < Sinatra::Base
-  set :views, File.join(File.dirname(__FILE__),'..','views') 
-
-  get '/' do
-    erb :form
-  end
-
-  post '/form' do
-    item = Item.new
-    item.attributes = params
-    item.save
-
-    redirect "/view/#{item.id}"
-  end
-
-  get '/view/?' do
-    erb :list, :locals => { :items => Item.all }
-  end
-
-  get '/view/:id' do
-    item = Item.find(params[:id])
-    erb :show, :locals => { :item => item }
-  end
+class Feedback < ActiveRecord::Base
+  mount_uploader :image, ImageUploader
+  mount_uploader :cropped_image, ImageUploader
 end

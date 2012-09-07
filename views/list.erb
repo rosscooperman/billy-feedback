@@ -1,8 +1,0 @@
-<h1>All submitted feedback items </h1>
-<% items.each do |i| %>
-	<p>Id: <%= i.id %></p> 
-	<p>Token: <%= i.token %></p>
-	<p>Content: <%= i.content %></p>
-	<p>Image: <img src="<%= i.image.url %>" /></p>
-	<p>Cropped Image: <img src="<%= i.cropped_image.url %>" /></p>
-<% end %>

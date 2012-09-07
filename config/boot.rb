@@ -17,3 +17,4 @@ end
 database_yml = File.expand_path('config/database.yml', APP_ROOT)
 ActiveRecord::Base.establish_connection(YAML::load_file(database_yml)[RACK_ENV])
 
+

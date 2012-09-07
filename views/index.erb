@@ -1,0 +1,30 @@
+<h1>All Feedback</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Content</th>
+      <th>Images</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% feedback.each do |f| %>
+      <tr>
+        <td><%= f.id %></td> 
+        <td>
+          <%= f.content.truncate(40) %>
+          <% if f.content.length > 37 %>
+            <a href="/feedback/<%= f.id %>/content" class="more-link">(more)</a>
+          <% end %>
+        </td>
+        <td>
+          <a href="<%= f.image.url %>">Original</a>
+          |
+          <a href="<%= f.cropped_image.url %>">Processed</a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<a class="btn btn-primary" href="/feedback/create"><i class="icon-thumbs-up icon-white"></i> New Feedback</a>
+

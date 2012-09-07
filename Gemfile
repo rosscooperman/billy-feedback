@@ -8,7 +8,10 @@ gem 'carrierwave'
 gem 'rack'
 gem 'fog'
 gem 'ey_config'
+gem 'thin'
 
 group :development do
+  gem 'pry'
+  gem 'shotgun'
 end
 

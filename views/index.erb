@@ -13,7 +13,7 @@
         <td><%= f.id %></td> 
         <td>
           <% omission = "... <a href=\"feedback/#{f.id}/raw\" class=\"more-link\">(more)</a>" %>
-          <%= f.raw_text.truncate(omission.length + 40, :omission => omission) %>
+          <%= f.raw_text.truncate(omission.length + 40, :omission => omission) if f.raw_text.present? %>
         </td>
         <td>
           <a href="<%= f.original.url %>">Original</a>
